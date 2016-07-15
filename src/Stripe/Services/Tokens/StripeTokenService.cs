@@ -17,7 +17,7 @@ using System.Threading.Tasks;
         public virtual StripeToken Get(string tokenId, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeToken>.MapFromJson(
-                Requestor.GetString($"{Urls.Tokens}/{tokenId}",
+                Requestor.GetString(Urls.Tokens+"/"+tokenId,
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -34,7 +34,7 @@ using System.Threading.Tasks;
         public virtual async Task<StripeToken> GetAsync(string tokenId, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeToken>.MapFromJson(
-                await Requestor.GetStringAsync($"{Urls.Tokens}/{tokenId}",
+                await Requestor.GetStringAsync(Urls.Tokens+"/"+tokenId,
                 SetupRequestOptions(requestOptions))
             );
         }

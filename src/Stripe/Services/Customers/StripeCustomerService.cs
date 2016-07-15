@@ -21,7 +21,7 @@ namespace Stripe
         public virtual StripeCustomer Get(string customerId, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeCustomer>.MapFromJson(
-                Requestor.GetString(this.ApplyAllParameters(null, $"{Urls.Customers}/{customerId}", false),
+                Requestor.GetString(this.ApplyAllParameters(null, Urls.Customers + "/" + customerId, false),
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -29,14 +29,14 @@ namespace Stripe
         public virtual StripeCustomer Update(string customerId, StripeCustomerUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeCustomer>.MapFromJson(
-                Requestor.PostString(this.ApplyAllParameters(updateOptions, $"{Urls.Customers}/{customerId}", false),
+                Requestor.PostString(this.ApplyAllParameters(updateOptions, Urls.Customers + "/" + customerId, false),
                 SetupRequestOptions(requestOptions))
             );
         }
 
         public virtual void Delete(string customerId, StripeRequestOptions requestOptions = null)
         {
-            Requestor.Delete($"{Urls.Customers}/{customerId}",
+            Requestor.Delete(Urls.Customers + "/" + customerId,
                 SetupRequestOptions(requestOptions));
         }
 
@@ -60,7 +60,7 @@ namespace Stripe
         public virtual async Task<StripeCustomer> GetAsync(string customerId, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeCustomer>.MapFromJson(
-                await Requestor.GetStringAsync(this.ApplyAllParameters(null, $"{Urls.Customers}/{customerId}", false),
+                await Requestor.GetStringAsync(this.ApplyAllParameters(null, Urls.Customers+"/"+customerId, false),
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -68,14 +68,14 @@ namespace Stripe
         public virtual async Task<StripeCustomer> UpdateAsync(string customerId, StripeCustomerUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeCustomer>.MapFromJson(
-                await Requestor.PostStringAsync(this.ApplyAllParameters(updateOptions, $"{Urls.Customers}/{customerId}", false),
+                await Requestor.PostStringAsync(this.ApplyAllParameters(updateOptions, Urls.Customers+"/"+customerId, false),
                 SetupRequestOptions(requestOptions))
             );
         }
 
         public virtual async void DeleteAsync(string customerId, StripeRequestOptions requestOptions = null)
         {
-            await Requestor.DeleteAsync($"{Urls.Customers}/{customerId}",
+            await Requestor.DeleteAsync(Urls.Customers+"/"+customerId,
                 SetupRequestOptions(requestOptions));
         }
 

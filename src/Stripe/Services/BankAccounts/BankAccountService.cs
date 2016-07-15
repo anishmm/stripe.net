@@ -13,7 +13,7 @@ namespace Stripe
         {
             return Mapper<CustomerBankAccount>.MapFromJson(
                 Requestor.PostString(
-                    this.ApplyAllParameters(createOptions, $"{Urls.BaseUrl}/customers/{customerId}/bank_accounts"),
+                    this.ApplyAllParameters(createOptions, Urls.BaseUrl + "/customers/" + customerId + "/bank_accounts"),
                     SetupRequestOptions(requestOptions)
                 )
             );
@@ -23,7 +23,7 @@ namespace Stripe
         {
             return Mapper<CustomerBankAccount>.MapFromJson(
                 Requestor.GetString(
-                    this.ApplyAllParameters(null, $"{Urls.BaseUrl}/customers/{customerId}/sources/{bankAccountId}"),
+                    this.ApplyAllParameters(null, Urls.BaseUrl + "/customers/" + customerId + "/sources/" + bankAccountId ),
                     SetupRequestOptions(requestOptions)
                 )
             );
@@ -33,7 +33,7 @@ namespace Stripe
         {
             return Mapper<CustomerBankAccount>.MapFromJson(
                 Requestor.PostString(
-                    this.ApplyAllParameters(updateOptions, $"{Urls.BaseUrl}/customers/{customerId}/sources/{bankAccountId}"),
+                    this.ApplyAllParameters(updateOptions, Urls.BaseUrl + "/customers/" + customerId + "/sources/" + bankAccountId),
                     SetupRequestOptions(requestOptions)
                 )
             );
@@ -42,7 +42,7 @@ namespace Stripe
         public virtual void Delete(string customerId, string bankAccountId, StripeRequestOptions requestOptions = null)
         {
             Requestor.Delete(
-                this.ApplyAllParameters(null, $"{Urls.BaseUrl}/customers/{customerId}/sources/{bankAccountId}"),
+                this.ApplyAllParameters(null, Urls.BaseUrl + "/customers/" + customerId + "/sources/" + bankAccountId),
                 SetupRequestOptions(requestOptions)
             );
         }
@@ -51,7 +51,7 @@ namespace Stripe
         {
             return Mapper<CustomerBankAccount>.MapCollectionFromJson(
                 Requestor.GetString(
-                    this.ApplyAllParameters(listOptions, $"{Urls.BaseUrl}/customers/{customerId}/bank_accounts", true),
+                    this.ApplyAllParameters(listOptions, Urls.BaseUrl + "/customers/" + customerId + "/bank_accounts", true),
                     SetupRequestOptions(requestOptions)
                 )
             );
@@ -61,7 +61,7 @@ namespace Stripe
         {
             return Mapper<CustomerBankAccount>.MapFromJson(
                 Requestor.PostString(
-                    this.ApplyAllParameters(verifyoptions, $"{Urls.BaseUrl}/customers/{customerId}/sources/{bankAccountId}/verify"),
+                    this.ApplyAllParameters(verifyoptions, Urls.BaseUrl + "/customers/" + customerId + "/sources/" + bankAccountId + "/verify"),
                     SetupRequestOptions(requestOptions)
                 )
             );
@@ -72,7 +72,7 @@ namespace Stripe
         {
             return Mapper<CustomerBankAccount>.MapFromJson(
                 await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(createOptions, $"{Urls.BaseUrl}/customers/{customerId}/bank_accounts"),
+                    this.ApplyAllParameters(createOptions, Urls.BaseUrl + "/customers/" + customerId + "/bank_accounts"),
                     SetupRequestOptions(requestOptions)
                 )
             );
@@ -82,7 +82,7 @@ namespace Stripe
         {
             return Mapper<CustomerBankAccount>.MapFromJson(
                 await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(null, $"{Urls.BaseUrl}/customers/{customerId}/sources/{bankAccountId}"),
+                    this.ApplyAllParameters(null, Urls.BaseUrl + "/customers/" + customerId + "/sources/" + bankAccountId),
                     SetupRequestOptions(requestOptions)
                 )
             );
@@ -92,7 +92,7 @@ namespace Stripe
         {
             return Mapper<CustomerBankAccount>.MapFromJson(
                 await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(updateOptions, $"{Urls.BaseUrl}/customers/{customerId}/sources/{bankAccountId}"),
+                    this.ApplyAllParameters(updateOptions,  Urls.BaseUrl + "/customers/{customerId}/sources/{bankAccountId}"),
                     SetupRequestOptions(requestOptions)
                 )
             );
@@ -101,7 +101,7 @@ namespace Stripe
         public virtual async Task DeleteAsync(string customerId, string bankAccountId, StripeRequestOptions requestOptions = null)
         {
             await Requestor.DeleteAsync(
-                this.ApplyAllParameters(null, $"{Urls.BaseUrl}/customers/{customerId}/sources/{bankAccountId}"),
+                this.ApplyAllParameters(null,  Urls.BaseUrl + "/customers/{customerId}/sources/{bankAccountId}"),
                 SetupRequestOptions(requestOptions)
             );
         }
@@ -110,7 +110,7 @@ namespace Stripe
         {
             return Mapper<CustomerBankAccount>.MapCollectionFromJson(
                 await Requestor.GetStringAsync(
-                    this.ApplyAllParameters(listOptions, $"{Urls.BaseUrl}/customers/{customerId}/bank_accounts", true),
+                    this.ApplyAllParameters(listOptions,  Urls.BaseUrl + "/customers/{customerId}/bank_accounts", true),
                     SetupRequestOptions(requestOptions)
                 )
             );
@@ -120,7 +120,7 @@ namespace Stripe
         {
             return Mapper<CustomerBankAccount>.MapFromJson(
                 await Requestor.PostStringAsync(
-                    this.ApplyAllParameters(verifyoptions, $"{Urls.BaseUrl}/customers/{customerId}/sources/{bankAccountId}/verify"),
+                    this.ApplyAllParameters(verifyoptions,  Urls.BaseUrl + "/customers/{customerId}/sources/{bankAccountId}/verify"),
                     SetupRequestOptions(requestOptions)
                 )
             );

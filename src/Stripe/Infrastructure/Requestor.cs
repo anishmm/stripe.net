@@ -10,7 +10,7 @@ namespace Stripe
     internal static class Requestor
     {
         internal static HttpClient HttpClient { get; private set; }
-        internal static string Version { get; }
+        internal static string Version { get; set; }
 
         static Requestor()
         {
@@ -99,7 +99,7 @@ namespace Stripe
             if (requestOptions.IdempotencyKey != null)
                 request.Headers.Add("Idempotency-Key", requestOptions.IdempotencyKey);
 
-            request.Headers.UserAgent.TryParseAdd($"Stripe.net {Version} (https://github.com/jaymedavis/stripe.net)");
+            request.Headers.UserAgent.TryParseAdd("Stripe.net {Version} (https://github.com/anishmm/stripe.net)");
 
             return request;
         }

@@ -14,14 +14,14 @@ namespace Stripe
         public virtual StripeApplicationFee Get(string applicationFeeId, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeApplicationFee>.MapFromJson(
-                Requestor.GetString(this.ApplyAllParameters(null, $"{Urls.ApplicationFees}/{applicationFeeId}", false),
+                Requestor.GetString(this.ApplyAllParameters(null, Urls.ApplicationFees+"/"+applicationFeeId, false),
                 SetupRequestOptions(requestOptions))
             );
         }
 
         public virtual StripeApplicationFee Refund(string applicationFeeId, int? refundAmount = null, StripeRequestOptions requestOptions = null)
         {
-            var url = this.ApplyAllParameters(null, $"{Urls.ApplicationFees}/{applicationFeeId}/refund", false);
+            var url = this.ApplyAllParameters(null, Urls.ApplicationFees+"/"+applicationFeeId+"/refund", false);
 
             if (refundAmount.HasValue)
                 url = ParameterBuilder.ApplyParameterToUrl(url, "amount", refundAmount.Value.ToString());
@@ -43,14 +43,14 @@ namespace Stripe
         public virtual async Task<StripeApplicationFee> GetAsync(string applicationFeeId, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeApplicationFee>.MapFromJson(
-                await Requestor.GetStringAsync(this.ApplyAllParameters(null, $"{Urls.ApplicationFees}/{applicationFeeId}", false),
+                await Requestor.GetStringAsync(this.ApplyAllParameters(null, Urls.ApplicationFees+"/"+applicationFeeId, false),
                 SetupRequestOptions(requestOptions))
             );
         }
 
         public virtual async Task<StripeApplicationFee> RefundAsync(string applicationFeeId, int? refundAmount = null, StripeRequestOptions requestOptions = null)
         {
-            var url = this.ApplyAllParameters(null, $"{Urls.ApplicationFees}/{applicationFeeId}/refund", false);
+            var url = this.ApplyAllParameters(null, Urls.ApplicationFees+"/"+applicationFeeId+"/refund", false);
 
             if (refundAmount.HasValue)
                 url = ParameterBuilder.ApplyParameterToUrl(url, "amount", refundAmount.Value.ToString());

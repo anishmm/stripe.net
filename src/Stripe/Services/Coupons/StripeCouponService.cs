@@ -18,7 +18,7 @@ namespace Stripe
         public virtual StripeCoupon Update(string couponId, StripeCouponUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeCoupon>.MapFromJson(
-                Requestor.PostString(this.ApplyAllParameters(updateOptions, $"{Urls.Coupons}/{couponId}", false),
+                Requestor.PostString(this.ApplyAllParameters(updateOptions, Urls.Coupons + "/" + couponId, false),
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -26,14 +26,14 @@ namespace Stripe
         public virtual StripeCoupon Get(string couponId, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeCoupon>.MapFromJson(
-                Requestor.GetString(this.ApplyAllParameters(null, $"{Urls.Coupons}/{couponId}", false),
+                Requestor.GetString(this.ApplyAllParameters(null, Urls.Coupons + "/" + couponId, false),
                 SetupRequestOptions(requestOptions))
             );
         }
 
         public virtual void Delete(string couponId, StripeRequestOptions requestOptions = null)
         {
-            Requestor.Delete(this.ApplyAllParameters(null, $"{Urls.Coupons}/{couponId}", false),
+            Requestor.Delete(this.ApplyAllParameters(null, Urls.Coupons + "/" + couponId, false),
                 SetupRequestOptions(requestOptions));
         }
 
@@ -57,7 +57,7 @@ namespace Stripe
         public virtual async Task<StripeCoupon> UpdateAsync(string couponId, StripeCouponUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeCoupon>.MapFromJson(
-                await Requestor.PostStringAsync(this.ApplyAllParameters(updateOptions, $"{Urls.Coupons}/{couponId}", false),
+                await Requestor.PostStringAsync(this.ApplyAllParameters(updateOptions, Urls.Coupons + "/" + couponId, false),
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -65,14 +65,14 @@ namespace Stripe
         public virtual async Task<StripeCoupon> GetAsync(string couponId, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeCoupon>.MapFromJson(
-                await Requestor.GetStringAsync(this.ApplyAllParameters(null, $"{Urls.Coupons}/{couponId}", false),
+                await Requestor.GetStringAsync(this.ApplyAllParameters(null, Urls.Coupons+"/"+couponId, false),
                 SetupRequestOptions(requestOptions))
             );
         }
 
         public virtual async void DeleteAsync(string couponId, StripeRequestOptions requestOptions = null)
         {
-            await Requestor.DeleteAsync(this.ApplyAllParameters(null, $"{Urls.Coupons}/{couponId}", false),
+            await Requestor.DeleteAsync(this.ApplyAllParameters(null, Urls.Coupons+"/"+couponId, false),
                 SetupRequestOptions(requestOptions));
         }
 

@@ -23,7 +23,7 @@ namespace Stripe
         public virtual StripeCharge Update(string chargeId, StripeChargeUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeCharge>.MapFromJson(
-                Requestor.PostString(this.ApplyAllParameters(updateOptions, $"{Urls.Charges}/{chargeId}", false),
+                Requestor.PostString(this.ApplyAllParameters(updateOptions, Urls.Charges + "/" + chargeId, false),
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -31,7 +31,7 @@ namespace Stripe
         public virtual StripeCharge Get(string chargeId, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeCharge>.MapFromJson(
-                Requestor.GetString(this.ApplyAllParameters(null, $"{Urls.Charges}/{chargeId}", false),
+                Requestor.GetString(this.ApplyAllParameters(null, Urls.Charges + "/" + chargeId, false),
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -46,7 +46,7 @@ namespace Stripe
 
         public virtual StripeCharge Capture(string chargeId, int? captureAmount = null, int? applicationFee = null, StripeRequestOptions requestOptions = null)
         {
-            var url = this.ApplyAllParameters(null, $"{Urls.Charges}/{chargeId}/capture", false);
+            var url = this.ApplyAllParameters(null, Urls.Charges + "/" + chargeId + "/capture", false);
 
             if (captureAmount.HasValue)
                 url = ParameterBuilder.ApplyParameterToUrl(url, "amount", captureAmount.Value.ToString());
@@ -71,7 +71,7 @@ namespace Stripe
         public virtual async Task<StripeCharge> UpdateAsync(string chargeId, StripeChargeUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeCharge>.MapFromJson(
-                await Requestor.PostStringAsync(this.ApplyAllParameters(updateOptions, $"{Urls.Charges}/{chargeId}", false),
+                await Requestor.PostStringAsync(this.ApplyAllParameters(updateOptions, Urls.Charges + "/" + chargeId, false),
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -79,7 +79,7 @@ namespace Stripe
         public virtual async Task<StripeCharge> GetAsync(string chargeId, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeCharge>.MapFromJson(
-                await Requestor.GetStringAsync(this.ApplyAllParameters(null, $"{Urls.Charges}/{chargeId}", false),
+                await Requestor.GetStringAsync(this.ApplyAllParameters(null, Urls.Charges + "/" + chargeId, false),
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -94,7 +94,7 @@ namespace Stripe
 
         public virtual async Task<StripeCharge> CaptureAsync(string chargeId, int? captureAmount = null, int? applicationFee = null, StripeRequestOptions requestOptions = null)
         {
-            var url = this.ApplyAllParameters(null, $"{Urls.Charges}/{chargeId}/capture", false);
+            var url = this.ApplyAllParameters(null, Urls.Charges + "/" + chargeId + "/capture", false);
 
             if (captureAmount.HasValue)
                 url = ParameterBuilder.ApplyParameterToUrl(url, "amount", captureAmount.Value.ToString());

@@ -21,7 +21,7 @@ namespace Stripe
         public virtual StripeInvoiceLineItem Get(string invoiceItemId, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeInvoiceLineItem>.MapFromJson(
-                Requestor.GetString(this.ApplyAllParameters(null, $"{Urls.InvoiceItems}/{invoiceItemId}", false),
+                Requestor.GetString(this.ApplyAllParameters(null, Urls.InvoiceItems + "/" + invoiceItemId, false),
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -29,14 +29,14 @@ namespace Stripe
         public virtual StripeInvoiceLineItem Update(string invoiceItemId, StripeInvoiceItemUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeInvoiceLineItem>.MapFromJson(
-                Requestor.PostString(this.ApplyAllParameters(updateOptions, $"{Urls.InvoiceItems}/{invoiceItemId}", false),
+                Requestor.PostString(this.ApplyAllParameters(updateOptions, Urls.InvoiceItems + "/" + invoiceItemId, false),
                 SetupRequestOptions(requestOptions))
             );
         }
 
         public virtual void Delete(string invoiceItemId, StripeRequestOptions requestOptions = null)
         {
-            Requestor.Delete($"{Urls.InvoiceItems}/{invoiceItemId}",
+            Requestor.Delete(Urls.InvoiceItems + "/" + invoiceItemId,
                 SetupRequestOptions(requestOptions));
         }
 
@@ -60,7 +60,7 @@ namespace Stripe
         public virtual async Task<StripeInvoiceLineItem> GetAsync(string invoiceItemId, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeInvoiceLineItem>.MapFromJson(
-                await Requestor.GetStringAsync(this.ApplyAllParameters(null, $"{Urls.InvoiceItems}/{invoiceItemId}", false),
+                await Requestor.GetStringAsync(this.ApplyAllParameters(null, Urls.InvoiceItems + "/" + invoiceItemId, false),
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -68,14 +68,14 @@ namespace Stripe
         public virtual async Task<StripeInvoiceLineItem> UpdateAsync(string invoiceItemId, StripeInvoiceItemUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeInvoiceLineItem>.MapFromJson(
-                await Requestor.PostStringAsync(this.ApplyAllParameters(updateOptions, $"{Urls.InvoiceItems}/{invoiceItemId}", false),
+                await Requestor.PostStringAsync(this.ApplyAllParameters(updateOptions, Urls.InvoiceItems + "/" + invoiceItemId, false),
                 SetupRequestOptions(requestOptions))
             );
         }
 
         public virtual async void DeleteAsync(string invoiceItemId, StripeRequestOptions requestOptions = null)
         {
-            await Requestor.DeleteAsync($"{Urls.InvoiceItems}/{invoiceItemId}",
+            await Requestor.DeleteAsync(Urls.InvoiceItems+"/"+invoiceItemId,
                 SetupRequestOptions(requestOptions));
         }
 

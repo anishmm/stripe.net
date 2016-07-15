@@ -6,7 +6,7 @@ namespace Stripe
     public class SourceCard
     {
         [JsonProperty("source[object]")]
-        internal string Object => "card";
+        internal string Object = "card";
 
         [JsonProperty("source[number]")]
         public string Number { get; set; }

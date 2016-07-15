@@ -10,7 +10,7 @@ namespace Stripe
         public virtual StripeEvent Get(string eventId, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeEvent>.MapFromJson(
-                Requestor.GetString($"{Urls.Events}/{eventId}",
+                Requestor.GetString(Urls.Events+"/"+eventId,
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -27,7 +27,7 @@ namespace Stripe
         public virtual async Task<StripeEvent> GetAsync(string eventId, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeEvent>.MapFromJson(
-                await Requestor.GetStringAsync($"{Urls.Events}/{eventId}",
+                await Requestor.GetStringAsync(Urls.Events+"/"+eventId,
                 SetupRequestOptions(requestOptions))
             );
         }

@@ -18,21 +18,21 @@ namespace Stripe
         public virtual StripePlan Get(string planId, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripePlan>.MapFromJson(
-                Requestor.GetString(this.ApplyAllParameters(null, $"{Urls.Plans}/{planId}", false),
+                Requestor.GetString(this.ApplyAllParameters(null, Urls.Plans + "/" + planId, false),
                 SetupRequestOptions(requestOptions))
             );
         }
 
         public virtual void Delete(string planId, StripeRequestOptions requestOptions = null)
         {
-            Requestor.Delete($"{Urls.Plans}/{planId}",
+            Requestor.Delete(Urls.Plans + "/" + planId,
                 SetupRequestOptions(requestOptions));
         }
 
         public virtual StripePlan Update(string planId, StripePlanUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripePlan>.MapFromJson(
-                Requestor.PostString(this.ApplyAllParameters(updateOptions, $"{Urls.Plans}/{planId}", false),
+                Requestor.PostString(this.ApplyAllParameters(updateOptions, Urls.Plans + "/" + planId, false),
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -57,21 +57,21 @@ namespace Stripe
         public virtual async Task<StripePlan> GetAsync(string planId, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripePlan>.MapFromJson(
-                await Requestor.GetStringAsync(this.ApplyAllParameters(null, $"{Urls.Plans}/{planId}", false),
+                await Requestor.GetStringAsync(this.ApplyAllParameters(null, Urls.Plans+"/"+planId, false),
                 SetupRequestOptions(requestOptions))
             );
         }
 
         public virtual async void DeleteAsync(string planId, StripeRequestOptions requestOptions = null)
         {
-            await Requestor.DeleteAsync($"{Urls.Plans}/{planId}",
+            await Requestor.DeleteAsync(Urls.Plans+"/"+planId,
                 SetupRequestOptions(requestOptions));
         }
 
         public virtual async Task<StripePlan> UpdateAsync(string planId, StripePlanUpdateOptions updateOptions, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripePlan>.MapFromJson(
-                await Requestor.PostStringAsync(this.ApplyAllParameters(updateOptions, $"{Urls.Plans}/{planId}", false),
+                await Requestor.PostStringAsync(this.ApplyAllParameters(updateOptions, Urls.Plans+"/"+planId, false),
                 SetupRequestOptions(requestOptions))
             );
         }

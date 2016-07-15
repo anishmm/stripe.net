@@ -6,7 +6,7 @@ namespace Stripe
     public class SourceBankAccount : INestedOptions
     {
         [JsonProperty("source[object]")]
-        internal string Object => "bank_account";
+        internal string Object = "bank_account";
 
         [JsonProperty("source[account_holder_name]")]
         public string AccountHolderName { get; set; }

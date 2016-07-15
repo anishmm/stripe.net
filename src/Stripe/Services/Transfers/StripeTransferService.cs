@@ -20,7 +20,7 @@ namespace Stripe
         public virtual StripeTransfer Get(string transferId, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeTransfer>.MapFromJson(
-                Requestor.GetString(this.ApplyAllParameters(null, $"{Urls.Transfers}/{transferId}", false),
+                Requestor.GetString(this.ApplyAllParameters(null, Urls.Transfers + "/" + transferId, false),
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -28,7 +28,7 @@ namespace Stripe
         public virtual StripeTransfer Cancel(string transferId, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeTransfer>.MapFromJson(
-                Requestor.PostString(this.ApplyAllParameters(null, $"{Urls.Transfers}/{transferId}/cancel", false),
+                Requestor.PostString(this.ApplyAllParameters(null, Urls.Transfers + "/" + transferId + "/cancel", false),
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -53,7 +53,7 @@ namespace Stripe
         public virtual async Task<StripeTransfer> GetAsync(string transferId, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeTransfer>.MapFromJson(
-                await Requestor.GetStringAsync(this.ApplyAllParameters(null, $"{Urls.Transfers}/{transferId}", false),
+                await Requestor.GetStringAsync(this.ApplyAllParameters(null, Urls.Transfers + "/" + transferId, false),
                 SetupRequestOptions(requestOptions))
             );
         }
@@ -61,7 +61,7 @@ namespace Stripe
         public virtual async Task<StripeTransfer> CancelAsync(string transferId, StripeRequestOptions requestOptions = null)
         {
             return Mapper<StripeTransfer>.MapFromJson(
-                await Requestor.PostStringAsync(this.ApplyAllParameters(null, $"{Urls.Transfers}/{transferId}/cancel", false),
+                await Requestor.PostStringAsync(this.ApplyAllParameters(null, Urls.Transfers + "/" + transferId + "/cancel", false),
                 SetupRequestOptions(requestOptions))
             );
         }

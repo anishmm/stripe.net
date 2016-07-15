@@ -36,7 +36,7 @@ namespace Stripe
 
                             foreach (string key in fraudDetails.Keys)
                             {
-                                requestString = ApplyParameterToUrl(requestString, $"fraud_details[{key}]", fraudDetails[key]);
+                                requestString = ApplyParameterToUrl(requestString, "fraud_details[{key}]", fraudDetails[key]);
                             }
                         }
                         else if (property.PropertyType == typeof(StripeDateFilter))
@@ -131,7 +131,7 @@ namespace Stripe
 
             foreach (string key in metadata.Keys)
             {
-                requestString = ApplyParameterToUrl(requestString, $"metadata[{key}]", metadata[key]);
+                requestString = ApplyParameterToUrl(requestString, "metadata[{key}]", metadata[key]);
             }
 
             return requestString;
